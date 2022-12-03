@@ -10,7 +10,7 @@
 
 #define WHO_AM_I 0xE0
 #define RETRY_INIT 5
-#define TIMEOUT_MS 100
+#define RETRY_MS 100
 
 static SPI_HandleTypeDef *himu;
 static GPIO_TypeDef *_port_cs;
@@ -120,7 +120,7 @@ int IMU_init(SPI_HandleTypeDef *handle,GPIO_TypeDef *port,uint16_t pin){
     int errcnt = 0;
     uint8_t whoami = readWHO_AM_I();
     while(whoami != WHO_AM_I){
-        HAL_Delay(100);
+        HAL_Delay(RETRY_MS);
         whoami = readWHO_AM_I();
         printf("%x\r\n",whoami);
         errcnt++;
