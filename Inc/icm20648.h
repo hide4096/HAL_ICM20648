@@ -8,6 +8,7 @@
 #ifndef ICM20648_H
 #define ICM20648_H
 
+//プロジェクトによってはspi.hをincludeしなくてもいい場合があります
 #include"spi.h"
 #include"main.h"
 
